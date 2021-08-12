@@ -1,7 +1,10 @@
 package rs.ac.bg.fon.nprog.client.gui;
 
-
+import rs.ac.bg.fon.nprog.client.komunikacija.KomunikacijaSaServerom;
 import rs.ac.bg.fon.nprog.library.domen.Korisnik;
+import rs.ac.bg.fon.nprog.library.konstante.Operacije;
+import rs.ac.bg.fon.nprog.library.transfer.KlijentskiZahtev;
+import rs.ac.bg.fon.nprog.library.transfer.ServerskiOdgovor;
 
 /**
  *
@@ -32,6 +35,7 @@ public class FrmMain extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         txtDobrodoslica = new javax.swing.JLabel();
+        btnZatvori = new javax.swing.JButton();
         menuRecept = new javax.swing.JMenuBar();
         jmiDodajRecept = new javax.swing.JMenu();
         jmiPrikaz = new javax.swing.JMenuItem();
@@ -47,9 +51,17 @@ public class FrmMain extends javax.swing.JFrame {
 
         jTextField1.setText("jTextField1");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/img/cooking.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/rs/ac/bg/fon/nprog/library/img/cooking.png"))); // NOI18N
 
         txtDobrodoslica.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
+
+        btnZatvori.setText("Zatvori");
+        btnZatvori.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnZatvoriActionPerformed(evt);
+            }
+        });
+       
 
         jmiDodajRecept.setText("Recept");
 
@@ -110,13 +122,15 @@ public class FrmMain extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(txtDobrodoslica, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(88, 88, 88)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnZatvori)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(txtDobrodoslica, javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(88, 88, 88)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -125,7 +139,9 @@ public class FrmMain extends javax.swing.JFrame {
                 .addComponent(txtDobrodoslica, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 479, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnZatvori)
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -151,12 +167,21 @@ public class FrmMain extends javax.swing.JFrame {
      new FrmFilterNaziv(this, true).setVisible(true);
     }                                               
 
+    private void btnZatvoriActionPerformed(java.awt.event.ActionEvent evt) {  
+    	KlijentskiZahtev kz=new KlijentskiZahtev();
+    	kz.setOperacija(Operacije.IZBACI_KLIJENTA);
+    	KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
+    	ServerskiOdgovor so=KomunikacijaSaServerom.getInstance().primiOdgovor();
+        this.dispose();
+    }                                          
+
     /**
      * @param args the command line arguments
      */
     
 
     // Variables declaration - do not modify                     
+    private javax.swing.JButton btnZatvori;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JTextField jTextField1;
@@ -169,12 +194,19 @@ public class FrmMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiPrikaz;
     private javax.swing.JMenuBar menuRecept;
     private javax.swing.JLabel txtDobrodoslica;
-    // End of variables declaration                   
+    // End of variables declaration  
+    
+        
 
     private void sredi() {
         this.setLocationRelativeTo(null);
         this.setTitle("Cookbook");
         txtDobrodoslica.setText("Zdravo "+ulogovan.getIme()+", nemoj da zaboraviš da dodaš novi recept danas!");
     }
+   
+
+
+	
+   
 }
 

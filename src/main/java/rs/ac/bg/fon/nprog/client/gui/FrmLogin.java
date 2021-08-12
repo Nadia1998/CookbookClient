@@ -121,6 +121,7 @@ public class FrmLogin extends javax.swing.JFrame {
         KlijentskiZahtev kz = new KlijentskiZahtev();
         kz.setParametar(korisnik);
         kz.setOperacija(Operacije.PRIJAVI_KORISNIKA);
+       
         KomunikacijaSaServerom.getInstance().posaljiZahtev(kz);
 
         ServerskiOdgovor so = KomunikacijaSaServerom.getInstance().primiOdgovor();
@@ -128,6 +129,7 @@ public class FrmLogin extends javax.swing.JFrame {
         if (so.isUspesno()) {
             Korisnik ulogovan = (Korisnik) so.getOdgovor();
             new FrmMain(ulogovan).setVisible(true);
+            this.dispose();
         }
         if (so.isUspesno() == false) {
             JOptionPane.showMessageDialog(this, "Netačna kombinacija lozinke i username-a");
