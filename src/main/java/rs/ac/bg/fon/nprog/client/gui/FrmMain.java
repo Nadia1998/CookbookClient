@@ -2,6 +2,18 @@ package rs.ac.bg.fon.nprog.client.gui;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+
+import javax.json.stream.JsonParser;
+
+import org.json.simple.parser.JSONParser;
 
 import rs.ac.bg.fon.nprog.client.komunikacija.KomunikacijaSaServerom;
 import rs.ac.bg.fon.nprog.library.domen.Korisnik;
@@ -69,8 +81,6 @@ public class FrmMain extends javax.swing.JFrame {
 
 		txtDobrodoslica.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
 
-		
-
 		jmiDodajRecept.setText("Recept");
 
 		jmiPrikaz.setText("Prikaži");
@@ -127,17 +137,15 @@ public class FrmMain extends javax.swing.JFrame {
 
 		javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
 		getContentPane().setLayout(layout);
-		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-				.addGroup(layout.createSequentialGroup().addGroup(layout
-						.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-						.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-								.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(txtDobrodoslica,
-										javax.swing.GroupLayout.PREFERRED_SIZE, 685,
-										javax.swing.GroupLayout.PREFERRED_SIZE))
-								.addGroup(layout.createSequentialGroup().addGap(88, 88, 88).addComponent(jLabel1,
-										javax.swing.GroupLayout.PREFERRED_SIZE, 525,
-										javax.swing.GroupLayout.PREFERRED_SIZE))))
-						.addContainerGap(42, Short.MAX_VALUE)));
+		layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout
+				.createSequentialGroup()
+				.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING).addGroup(layout
+						.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+						.addGroup(layout.createSequentialGroup().addContainerGap().addComponent(txtDobrodoslica,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 685, javax.swing.GroupLayout.PREFERRED_SIZE))
+						.addGroup(layout.createSequentialGroup().addGap(88, 88, 88).addComponent(jLabel1,
+								javax.swing.GroupLayout.PREFERRED_SIZE, 525, javax.swing.GroupLayout.PREFERRED_SIZE))))
+				.addContainerGap(42, Short.MAX_VALUE)));
 		layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
 				.addGroup(layout.createSequentialGroup()
 						.addComponent(txtDobrodoslica, javax.swing.GroupLayout.PREFERRED_SIZE, 33,
@@ -189,7 +197,7 @@ public class FrmMain extends javax.swing.JFrame {
 	private javax.swing.JMenuBar menuRecept;
 	private javax.swing.JLabel txtDobrodoslica;
 	// End of variables declaration
-	
+
 	public void handleClose() {
 		KlijentskiZahtev kz = new KlijentskiZahtev();
 		kz.setOperacija(Operacije.IZBACI_KLIJENTA);
@@ -201,6 +209,22 @@ public class FrmMain extends javax.swing.JFrame {
 		this.setLocationRelativeTo(null);
 		this.setTitle("Cookbook");
 		txtDobrodoslica.setText("Zdravo " + ulogovan.getIme() + ", nemoj da zaboraviš da dodaš novi recept danas!");
+		//dodajVreme();
 	}
 
+/*	private void dodajVreme() throws IOException {
+		String URL = "http://worldtimeapi.org/api/timezone/Europe/Belgrade";
+
+	    // Connect to the URL using java's native library
+	    URL url = new URL(URL);
+	    URLConnection request = url.openConnection();
+	    request.connect();
+
+	    // Convert to a JSON object to print data
+	    JSONParser jp = new JSONParser(); //from gson
+	    JsonElement root = jp.parse(new InputStreamReader((InputStream) request.getContent())); //Convert the input stream to a json element
+	    JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object. 
+	    String zipcode = rootobj.get("zip_code").getAsString();
+	}
+*/
 }
