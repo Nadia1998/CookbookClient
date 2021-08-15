@@ -4,6 +4,8 @@ import rs.ac.bg.fon.nprog.library.domen.Korisnik;
 import rs.ac.bg.fon.nprog.library.domen.Recept;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JDialog;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import rs.ac.bg.fon.nprog.client.komunikacija.KomunikacijaSaServerom;
@@ -16,7 +18,7 @@ import rs.ac.bg.fon.nprog.library.transfer.ServerskiOdgovor;
  *
  * @author Nadia
  */
-public class FrmPrikaz extends javax.swing.JDialog {
+public class FrmPrikaz extends JDialog {
 
     Korisnik korisnik;
     JFrame parent;

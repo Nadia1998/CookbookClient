@@ -4,6 +4,8 @@ import rs.ac.bg.fon.nprog.library.domen.Korisnik;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import rs.ac.bg.fon.nprog.client.komunikacija.KomunikacijaSaServerom;
 import rs.ac.bg.fon.nprog.library.konstante.Operacije;
@@ -14,7 +16,7 @@ import rs.ac.bg.fon.nprog.library.transfer.ServerskiOdgovor;
  *
  * @author Nadia
  */
-public class FrmLogin extends javax.swing.JFrame {
+public class FrmLogin extends JFrame {
 
 	/**
 	 * Creates new form FrmLogin

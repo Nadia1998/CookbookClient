@@ -12,6 +12,7 @@ import java.net.URL;
 import java.net.URLConnection;
 
 import javax.json.stream.JsonParser;
+import javax.swing.JFrame;
 
 import org.json.simple.parser.JSONParser;
 
@@ -25,7 +26,7 @@ import rs.ac.bg.fon.nprog.library.transfer.ServerskiOdgovor;
  *
  * @author Nadia
  */
-public class FrmMain extends javax.swing.JFrame {
+public class FrmMain extends JFrame {
 	Korisnik ulogovan;
 
 	/**

@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JTextField;
 import rs.ac.bg.fon.nprog.client.komunikacija.KomunikacijaSaServerom;
 import rs.ac.bg.fon.nprog.client.model.TableModelSastojci;
 import rs.ac.bg.fon.nprog.library.konstante.Operacije;
@@ -296,7 +295,8 @@ public class FrmDodaj extends JFrame {
 				.addGap(29, 29, 29)));
 
 		pack();
-	}// </editor-fold>
+	}
+// </editor-fold>
 
 	private void btnSacuvajReceptActionPerformed(java.awt.event.ActionEvent evt) {
 		sacuvajRecept();

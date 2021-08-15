@@ -3,6 +3,8 @@ package rs.ac.bg.fon.nprog.client.gui;
 import rs.ac.bg.fon.nprog.library.domen.Recept;
 import rs.ac.bg.fon.nprog.library.domen.Sastojak;
 import java.util.List;
+
+import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 import rs.ac.bg.fon.nprog.client.komunikacija.KomunikacijaSaServerom;
 import rs.ac.bg.fon.nprog.library.konstante.Operacije;
@@ -13,7 +15,7 @@ import rs.ac.bg.fon.nprog.library.transfer.ServerskiOdgovor;
  *
  * @author Nadia
  */
-public class FrmReceptDetaljno extends javax.swing.JDialog {
+public class FrmReceptDetaljno extends JDialog {
 
 	Recept r;
 
