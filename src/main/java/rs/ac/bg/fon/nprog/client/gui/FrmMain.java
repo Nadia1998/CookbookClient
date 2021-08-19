@@ -11,6 +11,10 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.net.URLConnection;
 
+import javax.json.Json;
+import javax.json.JsonArray;
+import javax.json.JsonObject;
+import javax.json.JsonReader;
 import javax.json.stream.JsonParser;
 import javax.swing.JFrame;
 
@@ -31,11 +35,13 @@ public class FrmMain extends JFrame {
 
 	/**
 	 * Creates new form FrmMain
+	 * @throws IOException 
 	 */
-	public FrmMain(Korisnik ulogovan) {
+	public FrmMain(Korisnik ulogovan)  {
 		initComponents();
 		this.ulogovan = ulogovan;
 		sredi();
+	
 
 		this.addWindowListener(new WindowAdapter() {
 
@@ -212,8 +218,8 @@ public class FrmMain extends JFrame {
 		txtDobrodoslica.setText("Zdravo " + ulogovan.getIme() + ", nemoj da zaboraviš da dodaš novi recept danas!");
 		//dodajVreme();
 	}
-
-/*	private void dodajVreme() throws IOException {
+/*
+	private void dodajVreme() throws IOException {
 		String URL = "http://worldtimeapi.org/api/timezone/Europe/Belgrade";
 
 	    // Connect to the URL using java's native library
@@ -227,5 +233,19 @@ public class FrmMain extends JFrame {
 	    JsonObject rootobj = root.getAsJsonObject(); //May be an array, may be an object. 
 	    String zipcode = rootobj.get("zip_code").getAsString();
 	}
+	private void nn() throws IOException {
+	URL url = new URL("http://worldtimeapi.org/api/timezone/Europe/Belgrade");
+	  try (InputStream is = url.openStream();
+	       JsonReader rdr = Json.createReader(is)) {
+	 
+	      JsonObject obj = rdr.readObject();
+	      JsonArray results = obj.getJsonArray("data");
+	     for (JsonObject result : results.getValuesAs(JsonObject.class)) {
+	          System.out.print(result.getJsonObject("name").getString("Europe"));
+	          System.out.print(": ");
+	     }
+	 }
+
+}
 */
 }

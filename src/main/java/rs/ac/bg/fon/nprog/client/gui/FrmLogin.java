@@ -4,6 +4,7 @@ import rs.ac.bg.fon.nprog.library.domen.Korisnik;
 
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.io.IOException;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
@@ -52,7 +53,9 @@ public class FrmLogin extends JFrame {
 		btnLogin.setText("Uloguj se");
 		btnLogin.addActionListener(new java.awt.event.ActionListener() {
 			public void actionPerformed(java.awt.event.ActionEvent evt) {
-				btnLoginActionPerformed(evt);
+				
+					btnLoginActionPerformed(evt);
+				
 			}
 		});
 
